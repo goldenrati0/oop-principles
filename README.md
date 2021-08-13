@@ -1,7 +1,7 @@
 ### OOP Principle
 I have tried to implement tree OOP principle in the `pizza-shop` project
 - Program to the Interface, not to the Implementation
-- Encapsulate what varries
+- Encapsulate what varies
 - Favor Composition over Inheritance (HAS-A is better than IS-A)
 
 ##### Project summary
