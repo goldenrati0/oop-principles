@@ -1,15 +1,14 @@
-from crust import ThinCrust, ThickCrust
-from toppings import MozarellaCheese, Bacon, Pepperoni
-from pizza import Margherita, BBQChicken
+from crust import ThickCrustWithFreeItems
+from topping import Bacon, Pepperoni, BaconWithFreeItems
+from pizza import Pizza, Margherita, BBQChicken
 
 
-margerita = Margherita()
-margerita.set_crust(ThinCrust())
-margerita.add_topping(MozarellaCheese())
-margerita.bake()
+margerita: Pizza = Margherita()
+margerita.add_topping(BaconWithFreeItems())
+margerita.get_details()
 
-bbq = BBQChicken()
-bbq.set_crust(ThickCrust())
+bbq: Pizza = BBQChicken()
+bbq.set_crust(ThickCrustWithFreeItems())
 bbq.add_topping(Bacon())
 bbq.add_topping(Pepperoni())
-bbq.bake()
+bbq.get_details()
