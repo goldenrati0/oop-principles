@@ -1,13 +1,21 @@
-from item import ItemInterface
+from abc import ABC, abstractmethod
 
+from item import Item
 
-class FreeItemInterface(ItemInterface):  # IS-A Item
-    def __init__(self, item: ItemInterface) -> None:
+class FreeItem(Item, ABC):  # IS-A Item
+    def __init__(self) -> None:
         super().__init__()
-        self.item = item
 
-        self.item.set_price(0.0)  # because it is free
-        self.item.clear_free_items()  # free-items cannot have more free items
+        self.update_item_price()  # because it is free
+        self.remove_additional_free_items()  # free-items cannot have more free items
 
-    def get_name(self) -> str:  # Override because Item is wrapped in FreeItem
-        return self.item.get_name()
+    @abstractmethod
+    def update_item_price(self) -> None:
+        raise NotImplementedError
+
+    @abstractmethod
+    def remove_additional_free_items(self) -> None:
+        raise NotImplementedError
+
+    def add_free_item(self, item: 'FreeItem') -> None:
+        raise Exception('Free item cannot have free items')
