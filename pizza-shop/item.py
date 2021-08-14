@@ -25,6 +25,9 @@ class Item(ABC):
         return self.price
 
     def add_free_item(self, item: 'FreeItem') -> None:
+        item.update_item_price()  # because it is free
+        item.remove_additional_free_items()  # free-items cannot have more free items
+
         self.free_items.append(item)
 
     def clear_free_items(self) -> None:
